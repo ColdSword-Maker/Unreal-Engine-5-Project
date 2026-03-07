@@ -4,6 +4,10 @@
 #include "GameFramework/Character.h"
 #include "KnightCharacter.generated.h"
 
+
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class ADVENTUREGAME_API AKnightCharacter : public ACharacter
 {
@@ -17,6 +21,12 @@ public:
 protected:
 
 	virtual void BeginPlay() override;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* CameraBoom;
+	
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* Camera;
 
 private:
 
