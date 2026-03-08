@@ -7,7 +7,9 @@
 
 class USpringArmComponent;
 class UCameraComponent;
-
+class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue;
 UCLASS()
 class ADVENTUREGAME_API AKnightCharacter : public ACharacter
 {
@@ -28,9 +30,32 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* Camera;
 
-private:
+protected:
 
+    // 输入映射上下文
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+    UInputMappingContext* DefaultMappingContext;
 
+    // 移动输入动作
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+    UInputAction* MoveAction;
+
+    // 视角旋转输入动作
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+    UInputAction* LookAction;
+
+    // 跳跃输入动作
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+    UInputAction* JumpAction;
+
+    // 移动处理函数
+    void Move(const FInputActionValue& Value);
+
+    // 视角旋转处理函数
+    void Look(const FInputActionValue& Value);
+
+    // 跳跃处理函数
+    void Jump(const FInputActionValue& Value);
 
 
 };
