@@ -1,5 +1,5 @@
 #include "Items/Item.h"
-
+#include "AdventureGame/DebugMacros.h"
 
 AItem::AItem()
 {
@@ -32,5 +32,7 @@ void AItem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	RunningTime += DeltaTime;
+	DRAW_SPHERE_SingleFrame(GetActorLocation());
+	DRAW_VECTOR_SingleFrame(GetActorLocation(), GetActorLocation() + GetActorForwardVector() * 100.f);
 }
 
